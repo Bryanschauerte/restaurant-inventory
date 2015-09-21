@@ -1,0 +1,59 @@
+
+
+<div layout = 'column'>
+  <md-button class="md-warn" type="submit" name="action" ng-click = "addItemStart()" ng-show = '!newItemFormShow'>Add an Item
+  <i class="material-icons right">send</i>
+</button>
+</div>
+<div ng-show = "newItemFormShow">
+  <!-- type of item -->
+  <div class="input-field col s12">
+    <select ng-model = "newItem.type">
+      <option value="" disabled selected>Choose your option</option>
+      <option value="dish">Dish</option>
+      <option value="dessert">Dessert</option>
+      <option value="drink">Drink</option>
+    </select>
+    <label>Add a Menu Item</label>
+  </div>
+
+<div class="row" >
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field">
+        <input placeholder="Item's name?" id="first_name" ng-model="newItem.name"type="text" class="validate">
+        <label for="first_name">What's the new item's name?</label>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- <md-input-container>
+  <select ng-options ="ingredients.name for newItem.ingredients in ingredients" ng-model= 'newItem.ingredients' ng-if = 'options'>
+
+  </select>
+  <label>ingredients</label>
+
+
+</md-input-container> -->
+<div><span>Ingredients for one serving of the new dish:</span>
+
+</div>
+
+<div class = 'md-accent hue-2'>
+
+
+  <form ng-submit="addIngredient(ingredientName,ingredientsIncrement,numberOfIncrements)">
+    Enter text and hit enter:
+    <input type="text" placeholder="Name of the ingredient to add to the new item" ng-model="ingredientName" name="text" />
+    <input type = "text" placeholder="what increment is the ingredient in (oz, lbs, ect)" ng-model= 'ingredientsIncrement' name ='increment'/>
+    <input type= 'text' placeholder="How many?" ng-model="numberOfIncrements" name = 'number'>
+
+    <input type="submit" id="submit" value="Add ingredient!" />
+    <pre>will need: {{newItem.ingredients}}</pre>
+  </form>
+
+<md-button class="md-accent md-raised" ng-click = "" flex>Home</md-button>
+
+
+</div>
