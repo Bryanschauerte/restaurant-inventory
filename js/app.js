@@ -9,11 +9,13 @@ var app = angular.module('inventory', ['ngRoute', 'ngMaterial'])
     })
 
     .when('/dishes',{
-      templateUrl:'/routes/Dishes.html'
+      templateUrl:'/routes/Dishes.html',
+      controller: 'itemsCtrl'
 
     })
     .when('/drinks',{
-      templateUrl:'/routes/drinks.html'
+      templateUrl:'/routes/drinks.html',
+      controller: 'itemsCtrl'
 
     })
     .when('/management',{
@@ -28,7 +30,8 @@ var app = angular.module('inventory', ['ngRoute', 'ngMaterial'])
 
     })
     .when('/desserts',{
-      templateUrl:'/routes/dessert.html'
+      templateUrl:'/routes/dessert.html',
+      controller: 'itemsCtrl'
 
 
     })

@@ -5,7 +5,7 @@ var app = angular.module('inventory').directive('addItem', function(){
     controller: 'itemsCtrl',
     restrict: 'E',
     scope: {
-
+      typeOfFood: '=info'
     }
 
   };

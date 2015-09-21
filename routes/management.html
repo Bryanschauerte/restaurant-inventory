@@ -1,10 +1,22 @@
 <div>
-  <ul>
-  <li>Today's Popular Items</li>
-  <li>Today's Popular spent inventory</li>
-  <li>Total inventory</li>
-  <li>Day Snapshot</li>
-  <ul>
-  <add-Item></add-Item>
-  <ul><li></li></ul>
+
+  <ul>Today's Popular desserts by most popular to least popular
+    <li ng-repeat= "food in desserts">{{food.name}} was sold {{food.numberSold}} times.</li>
+  </ul>
+
+  <ul>Today's Popular dishes by most popular to least popular
+    <li ng-repeat= "dish in dishes">{{dish.name}} was sold {{dish.numberSold}} times.</li>
+  </ul>
+
+  <ul>Today's Popular drinks by most popular to least popular
+    <li ng-repeat= "drink in drinks">{{drink.name}} was sold {{drink.numberSold}} times.</li>
+  </ul>
+
 </div>
+
+<div>
+  <ul><h3>Store-Room</h3>
+    <li ng-repeat = "item in ingredients">{{item.totalInStorage}} {{item.servingSizeIn}} of {{item.name}}</li>
+    
+</div>
+  <add-Item></add-Item>
