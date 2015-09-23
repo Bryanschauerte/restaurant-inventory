@@ -1,12 +1,12 @@
 
-
+  <!--
 <div layout = 'column'>
   <md-button class="md-warn" type="submit" name="action" ng-click = "addItemStart()" ng-show = '!newItemFormShow'>Add an Item
   <i class="material-icons right">send</i>
 </button>
 </div>
 <div ng-show = "newItemFormShow">
-  <!-- type of item -->
+
   <div>
     <select ng-model = "newItem.type">
       <option value="" disabled selected>Choose your option</option>
@@ -60,8 +60,9 @@
   </form>
   <md-button class="md-warn md-raised" ng-show ="areAddingIngredients== true" ng-click = "doneAddingIngredients()" flex>Done Adding ingredients</md-button>
   <md-button class="md-accent md-raised" ng-show ="areAddingIngredients== false" ng-click = "addingIngredients()" flex>Add more ingredients</md-button>
-  <md-button class="md-accent md-raised" ng-show ="addingANewItem" ng-click = "newItemAllDone()" flex>Save new item</md-button>
+  <md-button class="md-accent md-raised" ng-show ="showProductForm" ng-click = "newItemAllDone()" flex>Save new item</md-button>
 
 
 
 </div>
+-->

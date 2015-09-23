@@ -1,37 +1,62 @@
-var app = angular.module('inventory', ['ngRoute', 'ngMaterial'])
-
+var app = angular.module('inventory', ['ngRoute', 'ngMaterial','firebase'])
+  .constant('fb', {url: 'https://restaurantinventory.firebaseIO.com'})
 //dont forget to add ngmaterial dependancy
   .config(function($routeProvider, $mdThemingProvider){
     $routeProvider
 
     .when('/home', {
        templateUrl:'/routes/home.html'
+
     })
 
     .when('/dishes',{
       templateUrl:'/routes/Dishes.html',
-      controller: 'itemsCtrl'
+      controller: 'dishesCtrl',
+      resolve: {
+        dishes: function(firebaseService, $firebaseArray){
+          return $firebaseArray(firebaseService.getDishes());
+        },
+
+        ingredients: function(firebaseService, $firebaseArray) {
+          return $firebaseArray(firebaseService.getIngredients()).$loaded();
+        }
+      }
 
     })
     .when('/drinks',{
       templateUrl:'/routes/drinks.html',
-      controller: 'itemsCtrl'
+      controller: 'drinksCtrl',
+      resolve: {
+        drinks: function(firebaseService, $firebaseArray){
+          return $firebaseArray(firebaseService.getDrinks()).$loaded();},
 
+        ingredients: function(firebaseService, $firebaseArray) {
+          return $firebaseArray(firebaseService.getIngredients()).$loaded();
+        }
+      }
     })
     .when('/management',{
       templateUrl:'/routes/management.html',
-      controller: 'itemsCtrl'
-
-
-    })
-    .when('/tableHistory',{
-      templateUrl:'/routes/tableHistory.html'
+      controller: 'itemsCtrl',
+      resolve: {
+        ingredients: function(firebaseService, $firebaseArray) {
+          return $firebaseArray(firebaseService.getIngredients()).$loaded();
+        }
+      }
 
 
     })
     .when('/desserts',{
       templateUrl:'/routes/dessert.html',
-      controller: 'itemsCtrl'
+      controller: 'dessertsCtrl',
+      resolve: {
+        desserts: function(firebaseService, $firebaseArray){
+          return $firebaseArray(firebaseService.getDesserts()).$loaded();
+        },
+        ingredients: function(firebaseService, $firebaseArray) {
+          return $firebaseArray(firebaseService.getIngredients()).$loaded();
+        }
+      }
 
 
     })
@@ -46,8 +71,6 @@ $mdThemingProvider.theme('default')
   'hue-2': '600',
   'hue-3': 'A100'
 })
-// If you specify less than all of the keys, it will inherit from the
-// default shades
 .accentPalette('lime', {
   'default': '200' // use shade 200 for default, and keep all other shades the same
 });

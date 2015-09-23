@@ -1,4 +1,4 @@
-var app = angular.module('inventory').directive('footerDirective', function(){
+var app = angular.module('inventory').directive('productAvailable', function(){
 
 return {
 templateUrl: '/directives/templates/footer.html',

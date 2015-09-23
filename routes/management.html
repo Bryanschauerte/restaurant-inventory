@@ -16,7 +16,115 @@
 
 <div>
   <ul><h3>Store-Room</h3>
-    <li ng-repeat = "item in ingredients">{{item.totalInStorage}} {{item.servingSizeIn}} of {{item.name}}</li>
-    
+    <li ng-repeat = "item in ingredients">{{item.amount}} {{item.servingSizeIn}} of {{item.name}}</li>
+
 </div>
+<!-- test -->
+
+
+
+
+<div layout = 'column'>
+
+
+  <md-button class="md-warn" type="submit" name="action" ng-click = "readyToAddIngredient()" ng-show = 'ingredientButton'>Add Ingredients to Storeroom
+  <i class="material-icons right">send</i>
+</md-button>
+
+  <md-button class="md-warn" type="submit" name="action" ng-click = "addItemStart()" ng-show = 'productButton'>Add a Product
+  <i class="material-icons right">send</i>
+</md-button>
+
+
+
+
+<div class="row" ng-show = 'showIngredientForm' >
+  <form>
+    <div class="row">
+      <div class="input-field">
+        <input placeholder="Item's name?" id="first_name" ng-model="ingredientToAdd.name"type="text" class="validate">
+        <label for="first_name">What's the new item's name?</label>
+      </div>
+      <div class="input-field">
+        <input placeholder="Item's name?" id="first_name" ng-model="ingredientToAdd.servingSizeIn"type="text" class="validate">
+        <label for="first_name">Serving Size Units</label>
+      </div>
+       <div class="input-field">
+         <input placeholder="Item's name?" id="first_name" ng-model="ingredientToAdd.amount"type="number" class="validate">
+         <label for="first_name">How many/much are you adding?</label>
+      </div>
+    </div>
+    <md-button class = 'md-primary' ng-click = "addIngredientToStoreRoom()">Add it!</md-button>
+  </form>
+</div>
+
+
+<!--  -->
+
+
+<div ng-show = "showProductForm">
+  <!-- type of item -->
+  <div>
+    <select ng-model = "newItem.type">
+      <option value="" disabled selected>Choose your option</option>
+      <option value="dish">Dish</option>
+      <option value="dessert">Dessert</option>
+      <option value="drink">Drink</option>
+    </select>
+    <label>Add a Menu Item</label>
+  </div>
+
+<div class="row" >
+  <form>
+    <div class="row">
+      <div class="input-field">
+        <input placeholder="Item's name?" id="first_name" ng-model="newItem.name"type="text" class="validate">
+        <label for="first_name">What's the new item's name?</label>
+      </div>
+      <div class="input-field">
+        <input placeholder="Item's price?" id="first_name" ng-model="newItem.price"type="number" class="validate">
+        <label>How much does it cost?</label>
+      </div>
+      <md-input-container>
+        <label>Add a description for the new item</label>
+        <input type="text" ng-model="newItem.description">
+      </md-input-container>
+      <div>
+        <input placeholder="Add a picture URL" id="first_name" ng-model="newItem.picture"type="text">
+
+      </div>
+
+    </div>
+  </form>
+</div>
+
+<div><span>Ingredients for one serving of the new dish:</span>
+
+</div>
+
+<div class = 'md-accent hue-2'>
+
+
+  <form ng-if = "addingIngredientsToAProduct" ng-submit="addIngredient(ingredientName,ingredientsIncrement,numberOfIncrements)">
+    Enter text and hit enter:
+    <input type="text" placeholder="Name of the ingredient to add to the new item" ng-model="ingredientName" name="text" />
+    <input type = "text" placeholder="Units in(oz, lbs, ect)?" ng-model= 'ingredientsIncrement' name ='increment'/>
+    <input type= 'text' placeholder="How many?" ng-model="numberOfIncrements" name = 'number'>
+
+    <input type="submit" id="submit" value="Add ingredient!" />
+    <pre>will need: {{newItem.ingredients}}</pre>
+
+  </form>
+
+  <md-button class="md-warn md-raised" ng-show ="addingIngredientsToAProduct" ng-click = "AddingIngredientsToProductButton()" flex>Done Adding ingredients</md-button>
+  <md-button class="md-accent md-raised" ng-show ="!addingIngredientsToAProduct" ng-click = "AddingIngredientsToProductButton()" flex>Add more ingredients</md-button>
+  <md-button class="md-accent md-raised" ng-show ="showProductForm" ng-click = "newItemAllDone()" flex>Save new item</md-button>
+
+
+
+</div>
+
+
+<!-- test -->
+
   <add-Item></add-Item>

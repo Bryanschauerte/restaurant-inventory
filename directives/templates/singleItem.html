@@ -1,6 +1,12 @@
 <div ng-repeat="food in type">
-  <h3>{{food.name}}</h3>
+  <div flex layout= "row">
+  <h3 ng-click = "hi()">{{food.name}}</h3>
   <img ng-src = "{{food.picture}}"></img>
-  <h5>{{food.description}}</h5>
+  <h4>{{food.description}}</h4>
+  <h5>Contains:</h5>
+  <ul><li ng-repeat = 'part in food.ingredients'>{{part.name}}</li></ul>
   **Only ${{food.price}}!
+  <h1 ng-show = "enoughIngredients(food.ingredients, ingredients)">Not Available! Sorry!</h1>
+  <h1>{{ingredients}}</h1>
+</div>
 </div>
