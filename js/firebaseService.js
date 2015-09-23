@@ -1,8 +1,9 @@
-var app = angular.module('inventory').service('firebaseService', function(fb){
+var app = angular.module('inventory').service('firebaseService', function(fb, $firebaseArray){
 
-  // var firebaseRef = new Firebase;
+
   this.getIngredients = function(){
     return new Firebase(fb.url + '/ingredients');
+
   };
 
   this.getDesserts = function(){
@@ -10,8 +11,8 @@ var app = angular.module('inventory').service('firebaseService', function(fb){
 
   };
 
-  this.getDishes = function(){
-    return new Firebase(fb.url + '/dishes');
+  this.getDishs = function(){
+    return new Firebase(fb.url + '/dishs');
   };
 
   this.getDrinks = function(){

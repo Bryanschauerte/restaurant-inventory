@@ -3,7 +3,7 @@ var app = angular.module('inventory').controller('dessertsCtrl', function($scope
 $scope.desserts = desserts;
 $scope.ingredients = ingredients;
 
-
+console.log(desserts);
 
 
 

@@ -1,6 +1,6 @@
-var app = angular.module('inventory').controller('dishesCtrl', function($scope, dishes, ingredients){
+var app = angular.module('inventory').controller('dishesCtrl', function($scope, dishs, ingredients){
 
-$scope.dishes = dishes;
+$scope.dishs = dishs;
 $scope.ingredients = ingredients;
 
 

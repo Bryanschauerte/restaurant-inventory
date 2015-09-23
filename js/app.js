@@ -1,7 +1,7 @@
 var app = angular.module('inventory', ['ngRoute', 'ngMaterial','firebase'])
   .constant('fb', {url: 'https://restaurantinventory.firebaseIO.com'})
-//dont forget to add ngmaterial dependancy
-  .config(function($routeProvider, $mdThemingProvider){
+
+  .config(function($routeProvider, $mdThemingProvider, $mdIconProvider){
     $routeProvider
 
     .when('/home', {
@@ -12,9 +12,10 @@ var app = angular.module('inventory', ['ngRoute', 'ngMaterial','firebase'])
     .when('/dishes',{
       templateUrl:'/routes/Dishes.html',
       controller: 'dishesCtrl',
+
       resolve: {
-        dishes: function(firebaseService, $firebaseArray){
-          return $firebaseArray(firebaseService.getDishes());
+        dishs: function(firebaseService, $firebaseArray){
+          return $firebaseArray(firebaseService.getDishs());
         },
 
         ingredients: function(firebaseService, $firebaseArray) {
@@ -41,7 +42,16 @@ var app = angular.module('inventory', ['ngRoute', 'ngMaterial','firebase'])
       resolve: {
         ingredients: function(firebaseService, $firebaseArray) {
           return $firebaseArray(firebaseService.getIngredients()).$loaded();
-        }
+        },
+        drinks: function(firebaseService, $firebaseArray){
+          return $firebaseArray(firebaseService.getDrinks()).$loaded();},
+        desserts: function(firebaseService, $firebaseArray){
+          return $firebaseArray(firebaseService.getDesserts()).$loaded();
+              },
+        dishs: function(firebaseService, $firebaseArray){
+          return $firebaseArray(firebaseService.getDishs());
+              }
+
       }
 
 
@@ -64,15 +74,23 @@ var app = angular.module('inventory', ['ngRoute', 'ngMaterial','firebase'])
 
 
 $mdThemingProvider.theme('default')
-
-.primaryPalette('indigo', {
-  'default': '400',
-  'hue-1': '100',
-  'hue-2': '600',
-  'hue-3': 'A100'
-})
-.accentPalette('lime', {
-  'default': '200' // use shade 200 for default, and keep all other shades the same
-});
+            .primaryPalette('deep-purple', {
+              'default': '300',
+              'hue-1': '100',
+              'hue-2': '600',
+              'hue-3': '900'
+            })
+            .backgroundPalette('blue-grey', {
+              'default': '50',
+              'hue-1': '100',
+              'hue-2': '600',
+              'hue-3': 'A100'
+            })
+            .accentPalette('brown', {
+              'default': '300',
+              'hue-1': '100',
+              'hue-2': '600',
+              'hue-3': 'A100'
+            });
 
         });

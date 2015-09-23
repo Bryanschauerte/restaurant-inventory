@@ -1,4 +1,4 @@
-var app = angular.module('inventory').controller('itemsCtrl', function($scope, ingredients, $mdToast, $document, $firebaseObject, $firebaseArray, fb){
+var app = angular.module('inventory').controller('itemsCtrl', function($scope, ingredients, dishs, drinks, desserts, $mdToast, $document, $firebaseObject, $firebaseArray, fb){
 
 $scope.ingredients = ingredients;
 $scope.productButton =true;
@@ -6,9 +6,9 @@ $scope.showProductForm = false;
 $scope.ingredientButton = true;
 $scope.showIngredientForm = false;
 $scope.addingIngredientsToAProduct = false;
-$scope.desserts = [];
-$scope.dishes = [];
-$scope.drinks = [];
+$scope.desserts = dishs;
+$scope.dishs = desserts;
+$scope.drinks = drinks;
 
 $scope.newItem = {name:'', type:'', price:0, ingredients:[], picture:'', numberSold:0, description:''};
 $scope.ingredientToAdd = {name: '', servingSizeIn: '', amount: 0};
@@ -19,14 +19,15 @@ $scope.addIngredientToStoreRoom = function(){
   ingredient.$add($scope.ingredientToAdd);
   $scope.ingredientToAdd = {};
   $scope.showSimpleToast();
-}
-$scope.readyToAddIngredient = function(){
-$scope.productButton = false;
-$scope.ingredientButton = false;
-$scope.showIngredientForm = true;
-$scope.showProductForm = false;
+};
 
-}
+$scope.readyToAddIngredient = function(){
+  $scope.productButton = false;
+  $scope.ingredientButton = false;
+  $scope.showIngredientForm = true;
+  $scope.showProductForm = false;
+
+};
 
 
 $scope.addItemStart = function(){
@@ -45,36 +46,22 @@ $scope.addItemStart = function(){
 $scope.addIngredient = function(inputName, inputServingSizeIn, howMany){
     var newIngredient = { name: inputName, servingSizeIn: inputServingSizeIn, howMuchPerServing: howMany};
     $scope.newItem.ingredients.push(newIngredient);
-    // $scope.cycleAndCheckIngredients(newIngredient);
-
     $scope.numberOfIncrements = '';
     $scope.ingredientsIncrement= '';
     $scope.ingredientName= '';
 
   };
 
-// $scope.cycleAndCheckIngredients = function(nameOfIngredientToCheck){
-//    var add= false;
-//    var ingredientsUrl = new Firebase(fb.url + '/ingredients');
-//    var ingredientsAddress = $firebaseArray(ingredientsUrl);
-//    for(var i =0; i< $scope.ingredients.length; i++){
-//      if($scope.ingredients[i].name == nameOfIngredientToCheck.name){
-//        add = false;}
-//    }
-//    if(!add){
-//      ingredientsAddress.$add(nameOfIngredientToCheck);
-//    }
-// }
-
 $scope.newItemAllDone = function(){
 
 // $scope.cycleAndCheckIngredients($scope.newItem);
   switch ($scope.newItem.type) {
     case 'dish':
-      $scope.dishes.push($scope.newItem);
-      var dishUrl = new Firebase(fb.url + '/dishes');
-      var dishes = $firebaseArray(dishUrl);
-      dishes.$add($scope.newItem);
+      $scope.dishs.push($scope.newItem);
+      //dish instead of dishes to make removal easier
+      var dishUrl = new Firebase(fb.url + '/dishs');
+      var dishs = $firebaseArray(dishUrl);
+      dishs.$add($scope.newItem);
       $scope.newItem ={};
       break;
 
@@ -115,6 +102,27 @@ $scope.showSimpleToast = function() {
     $scope.showIngredientForm = false;
     $scope.showProductForm = false;
     $scope.addingIngredientsToAProduct = false;
+  };
+
+
+  $scope.enoughIngredients = function(foodItem){
+
+  var isThere = false;
+  for(var item in foodItem.ingredients){
+    // console.log(foodItem.ingredients[item].name);
+    for(var i = 0; i < $scope.ingredients.length; i++){
+      if(foodItem.ingredients[item].name == $scope.ingredients[i].name){
+        isThere = true;
+      }
+    };
+  };
+
+  if(isThere){
+    return true;
+  }
+  else {
+
+  return false;}
   };
 
 });
