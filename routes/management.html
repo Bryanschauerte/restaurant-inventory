@@ -12,13 +12,13 @@
     <li ng-repeat= "sips in drinks"><h4 ng-show = "enoughIngredients(sips)">{{sips.name}}</h4></li>
   </ul>
 
-
-
 </div>
 
 <div>
   <ul><h2>Store-Room</h2>
-    <li ng-repeat = "item in ingredients">{{item.amount}} {{item.servingSizeIn}} of {{item.name}}</li>
+    <li ng-repeat = "item in ingredients">
+      {{item.amount}} {{item.servingSizeIn}} of {{item.name}}
+      <md-button class = 'md-warn' ng-click= 'removeIngredient(item.$id)'>Remove This Ingredient</md-button></li>
 
 </div>
 
@@ -33,9 +33,6 @@
   <i class="material-icons right">send</i>
 </md-button>
 
-
-
-<!-- heeeerrrreee -->
 <div class="row" ng-show = 'showIngredientForm' >
 
     <div class="row">
@@ -59,9 +56,6 @@
   </md-input-container>
 
 </div>
-
-
-<!--  -->
 
 
 <div ng-show = "showProductForm">
@@ -101,12 +95,6 @@
 
 </div>
 
-
-
-
-
-
-<!--  -->
 <div><h3>Ingredients for one serving of the new dish:</h3>
 
 </div>
@@ -132,8 +120,3 @@
 
 
 </div>
-
-
-<!-- test -->
-
-  <add-Item></add-Item>

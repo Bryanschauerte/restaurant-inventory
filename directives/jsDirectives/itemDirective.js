@@ -3,7 +3,7 @@ var app = angular.module('inventory').directive('addMenu', function(){
 var controller = function($scope, firebaseService, $firebaseArray, $mdToast, optionsService){
 
   $scope.removeItem = function(itemID, typeOfFood){
-    console.log(itemID);
+  
     optionsService.removeItem(itemID, typeOfFood);
   }
 

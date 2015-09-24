@@ -104,24 +104,30 @@ $scope.showSimpleToast = function() {
     $scope.addingIngredientsToAProduct = false;
   };
 
-//
-//   $scope.enoughIngredients = function(foodItem){
-//
-//   var isThere = false;
-//   for(var item in foodItem.ingredients){
-//     for(var i = 0; i < $scope.ingredients.length; i++){
-//       if(foodItem.ingredients[item].name == $scope.ingredients[i].name){
-//         isThere = true;
-//       }
-//     };
-//   };
-//
-//   if(isThere){
-//     return true;
-//   }
-//   else {
-//
-//   return false;}
-//   };
-//
+
+  $scope.removeIngredient = function(itemID){
+    var urlToGo = new Firebase(fb.url + '/ingredients/' + itemID);
+      var objectToRemove = $firebaseObject(urlToGo);
+      objectToRemove.$remove().then(function(ref){
+      },    function(error){
+    });}
+
+
+    $scope.enoughIngredients = function(foodItem){
+    var isThere = false;
+    var ingredientsCounter = foodItem.ingredients.length-1;
+    for(var item in foodItem.ingredients){
+      for(var i = 0; i < $scope.ingredients.length; i++){
+        if(foodItem.ingredients[item].name == $scope.ingredients[i].name){
+          ingredientsCounter-=1;
+          if(ingredientsCounter <= 0){
+            isThere = true;
+          }
+
+        }
+      };
+    };
+return isThere;
+    };
+
 });
