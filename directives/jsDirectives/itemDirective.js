@@ -16,11 +16,16 @@ var controller = function($scope, firebaseService, $firebaseArray, $mdToast, opt
 
 $scope.enoughIngredients = function(foodItem){
 var isThere = false;
+var ingredientsCounter = foodItem.ingredients.length-1;
+console.log(ingredientsCounter);
 for(var item in foodItem.ingredients){
-  // console.log(foodItem.ingredients[item].name);
   for(var i = 0; i < $scope.ingredients.length; i++){
     if(foodItem.ingredients[item].name == $scope.ingredients[i].name){
-      isThere = true;
+      ingredientsCounter-=1;
+      if(ingredientsCounter <= 0){
+        isThere = true;
+      }
+
     }
   };
 };

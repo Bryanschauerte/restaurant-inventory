@@ -1,16 +1,20 @@
 
-<md-list layout-margins layout= "column" ng-repeat="food in type">
-  <md-list-item layout-padding>
-    <h3 flex layout-padding>{{food.name}}</h3>
-    <img  flex layout-padding ng-src = "{{food.picture}}"></img>
-    <h4  flex layout-padding>{{food.description}}</h4>
+<md-list class = "md-whiteframe-z3" layout= "column">
 
-    <ul flex layout-padding><h4>Contains:</h4><li ng-repeat = 'part in food.ingredients'>{{part.name}}</li></ul>
+  <md-list-item ng-repeat="food in type" layout-padding>
+    <md-list-item><h2>{{food.name}}</h2></md-list-item>
+    <md-list-item><img  flex layout-padding ng-src = "{{food.picture}}"></img></md-list-item>
+    <md-list-item><h4  flex layout-padding>{{food.description}}</h4></md-list-item>
 
-    **Only ${{food.price}}!
-    <md-button ng-click = "enoughIngredients(food)">Check availability</md-button>
+    <ul flex layout-padding>
+      <h4>Contains:</h4><li ng-repeat = 'part in food.ingredients'>{{part.name}}</li>
+    </ul>
 
-  <md-button flex class = 'md-warn' ng-click = "removeItem(food.$id, food.type)">Remove This Item</md-button>
+    <md-list-item><h4>Price:</h4>**Only ${{food.price}}!</md-list-item>
+    <md-list-item><md-button ng-click = "enoughIngredients(food)"><p>Check availability<p></md-button></md-list-item>
 
-  </md-list-item>
+  <md-list-item flex class = 'md-warn' ng-click = "removeItem(food.$id, food.type)">
+    <p>Remove This Item</p></md-list-item>
+
+<md-divider></md-divider>
 </md-list>

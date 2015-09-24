@@ -5,5 +5,11 @@ img{
 }
 .title {
 
-  background-color: blue;
+  background-color: inherit;
+  display: inline-block;
+  font-family: cursive;
+  font-size: 40px;
+  margin-left: 60px;
+  margin-right: auto;
+
 }

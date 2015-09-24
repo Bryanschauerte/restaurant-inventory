@@ -1,14 +1,14 @@
 <div class = 'md-accent'>
 
-  <h3>Today's available dishes</h3><ul>
-    <li ng-repeat= "food in dishs"><h4 ng-show = "enoughIngredients(food)">{{food.name}}</h4></li>
+  <ul><h3>Today's available dishes</h3>
+    <li ng-repeat= "dish in dishs"><h4 ng-show = "enoughIngredients(dish)">{{dish.name}}</h4></li>
   </ul>
 
-  <h3>Today's available desserts</h3><ul>
+<ul><h3>Today's available desserts</h3>
     <li ng-repeat= "ice in desserts"><h4 ng-show = "enoughIngredients(ice)">{{ice.name}}</h4></li>
   </ul>
 
-  <h3>Today's available drinks</h3><ul>
+  <ul><h3>Today's available drinks</h3>
     <li ng-repeat= "sips in drinks"><h4 ng-show = "enoughIngredients(sips)">{{sips.name}}</h4></li>
   </ul>
 
@@ -65,46 +65,6 @@
 
 
 <div ng-show = "showProductForm">
-  <!-- type of item -->
-<!--
-
-
-
-  <div>
-    <select ng-model = "newItem.type">
-      <option value="" disabled selected>Choose your option</option>
-      <option value="dish">Dish</option>
-      <option value="dessert">Dessert</option>
-      <option value="drink">Drink</option>
-    </select>
-    <label>Add a Menu Item</label>
-  </div>
-
-<div class="row" >
-  <form>
-    <div class="row">
-      <div class="input-field">
-        <input placeholder="Item's name?" id="first_name" ng-model="newItem.name"type="text" class="validate">
-        <label for="first_name">What's the new item's name?</label>
-      </div>
-      <div class="input-field">
-        <input placeholder="Item's price?" id="first_name" ng-model="newItem.price"type="number" class="validate">
-        <label>How much does it cost?</label>
-      </div>
-      <md-input-container>
-        <label>Add a description for the new item</label>
-        <input type="text" ng-model="newItem.description">
-      </md-input-container>
-      <div>
-        <input placeholder="Add a picture URL" id="first_name" ng-model="newItem.picture"type="text">
-
-      </div>
-
-    </div>
-  </form>
-</div> -->
-<!-- new -->
-
 <div ng-show = "showProductForm" class="row" >
 
 <md-input-container>

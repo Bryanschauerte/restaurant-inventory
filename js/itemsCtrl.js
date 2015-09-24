@@ -6,8 +6,8 @@ $scope.showProductForm = false;
 $scope.ingredientButton = true;
 $scope.showIngredientForm = false;
 $scope.addingIngredientsToAProduct = false;
-$scope.desserts = dishs;
-$scope.dishs = desserts;
+$scope.desserts = desserts;
+$scope.dishs = dishs;
 $scope.drinks = drinks;
 
 $scope.newItem = {name:'', type:'', price:0, ingredients:[], picture:'', numberSold:0, description:''};
@@ -104,25 +104,24 @@ $scope.showSimpleToast = function() {
     $scope.addingIngredientsToAProduct = false;
   };
 
-
-  $scope.enoughIngredients = function(foodItem){
-
-  var isThere = false;
-  for(var item in foodItem.ingredients){
-    // console.log(foodItem.ingredients[item].name);
-    for(var i = 0; i < $scope.ingredients.length; i++){
-      if(foodItem.ingredients[item].name == $scope.ingredients[i].name){
-        isThere = true;
-      }
-    };
-  };
-
-  if(isThere){
-    return true;
-  }
-  else {
-
-  return false;}
-  };
-
+//
+//   $scope.enoughIngredients = function(foodItem){
+//
+//   var isThere = false;
+//   for(var item in foodItem.ingredients){
+//     for(var i = 0; i < $scope.ingredients.length; i++){
+//       if(foodItem.ingredients[item].name == $scope.ingredients[i].name){
+//         isThere = true;
+//       }
+//     };
+//   };
+//
+//   if(isThere){
+//     return true;
+//   }
+//   else {
+//
+//   return false;}
+//   };
+//
 });
